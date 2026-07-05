@@ -106,7 +106,7 @@ http://localhost:3000
 | `pages-routes.js` | About, Blog, Terms, Contact |
 | `header.html`, `footer.html` | Included on every page |
 | `index.html`, `shop.html`, `product.html`, `cart.html`, `checkout.html`, `order-confirmation.html`, `account.html`, `login.html`, `register.html`, `about.html`, `blog.html`, `terms.html`, `contact.html`, `404.html` | One template per page |
-| `style.css` | original stylesheet for all pages |
+| `style.css` | Original stylesheet for all pages |
 | `script.js` | Search-dropdown behavior |
 | `logo.png`, `Hero.jpg`, `arrivals-hero.jpg` | Site logo + hero banner images |
 | `product1.jpg` ... `tables-cat.jpg` | Sample product photos |
@@ -132,7 +132,7 @@ http://localhost:3000
 
 ---
 
-## Future Improvements
+## Future Improvements that could be implemented
 
 - Stripe Payment Integration
 - Admin Dashboard
