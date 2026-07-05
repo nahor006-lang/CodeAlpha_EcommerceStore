@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Create Account - MA SPACE</title>
+        <link rel="stylesheet" href="/css/style.css">
+    </head>
+
+    <body>
+        <%- include('../partials/header.html') %>
+
+        <main class="auth-page section-p1">
+            <div class="auth-box">
+                <h1>Create your account</h1>
+                <p class="auth-subtitle">Join MA SPACE to track orders and check out faster.</p>
+
+                <% if (error) { %><p class="form-error"><%= error %></p><% } %>
+
+                <form action="/register" method="POST" class="auth-form">
+                    <label for="name">Full name</label>
+                    <input type="text" id="name" name="name" required>
+
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" required>
+
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" required minlength="6">
+
+                    <label for="confirmPassword">Confirm password</label>
+                    <input type="password" id="confirmPassword" name="confirmPassword" required minlength="6">
+
+                    <button type="submit" class="checkout-btn">Create Account</button>
+                </form>
+
+                <p class="auth-switch">Already have an account? <a href="/login">Log in</a></p>
+            </div>
+        </main>
+
+        <footer class="site-footer">
+            <%- include('../partials/footer.html') %>
+        </footer>
+
+        <script src="/js/script.js"></script>
+    </body>
+</html>

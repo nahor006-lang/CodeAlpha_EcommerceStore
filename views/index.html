@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>MA SPACE — Objects for a quieter kind of beautiful</title>
+        <link rel="stylesheet" href="/css/style.css">
+    </head>
+
+    <body>
+        <%- include('../partials/header.html') %>
+
+        <!--Hero Section-->
+        <section id="hero">
+            <div id="hero-inner">
+                <span id="eyebrow">New collection</span>
+                <h1>Objects for a <em>quieter</em> kind of beautiful.</h1>
+                <p class="lede">Small-batch home goods in a considered palette of violet and orchid — designed to be lived with, not just looked at.</p>
+                <a href="/shop"><button>Shop the collection</button></a>
+            </div>
+        </section>
+
+        <!--New Arrivals-->
+        <section id="new-arrivals">
+            <div class="section-header">
+                <h2>New Arrivals</h2>
+                <a href="/new-arrivals" class="see-more-btn">See more</a>
+            </div>
+
+            <div class="product-grid">
+                <% newArrivals.forEach(function(product) { %>
+                    <a href="/product/<%= product.id %>" class="product-card-link">
+                        <div class="product-card">
+                            <div class="image-container">
+                                <img src="<%= product.image %>" alt="<%= product.name %>">
+                                <% if (product.tag) { %><span class="orange-dot"></span><% } %>
+                            </div>
+                            <div class="product-info">
+                                <h3>Ma Space</h3>
+                                <p><%= product.name %></p>
+                            </div>
+                        </div>
+                    </a>
+                <% }); %>
+            </div>
+        </section>
+
+        <!--Promo Banner-->
+        <section class="promo-banner">
+            <div class="banner-text-side">
+                <div class="text-content-wrapper">
+                    <span class="banner-subtitle">The Art of Lounging</span>
+                    <h2 class="banner-main-text">
+                        "Designed with deep, generous proportions and premium high-resiliency foam, our lounge sofa redefines the heart of the living room. A perfect balance of structured refinement and sink-in comfort."
+                    </h2>
+                    <a href="/product/5" class="banner-shop-link">
+                        SHOP NOW <span class="arrow">&rarr;</span>
+                    </a>
+                </div>
+            </div>
+
+            <a href="/product/5" class="banner-image-side">
+                <div class="image-overflow-container">
+                    <img src="/images/lounge-sofa.jpg" alt="Minimalist Lounge Sofa" class="zoom-image">
+                </div>
+            </a>
+        </section>
+
+        <!--Categories-->
+        <section id="shop-categories">
+            <div class="categories-header">
+                <h2>Shop by Categories</h2>
+            </div>
+
+            <div class="categories-grid">
+                <a href="/shop?category=Lighting" class="category-card">
+                    <div class="cat-image-wrapper">
+                        <img src="/images/lighting-cat.jpg" alt="Lighting Category">
+                    </div>
+                    <h3 class="category-title">Lighting</h3>
+                </a>
+
+                <a href="/shop?category=Outdoor" class="category-card">
+                    <div class="cat-image-wrapper">
+                        <img src="/images/outdoor-cat.jpg" alt="Outdoor Category">
+                    </div>
+                    <h3 class="category-title">Outdoor</h3>
+                </a>
+
+                <a href="/shop?category=Seating" class="category-card">
+                    <div class="cat-image-wrapper">
+                        <img src="/images/seating-cat.jpg" alt="Seating Category">
+                    </div>
+                    <h3 class="category-title">Seating</h3>
+                </a>
+
+                <a href="/shop?category=Tables" class="category-card">
+                    <div class="cat-image-wrapper">
+                        <img src="/images/tables-cat.jpg" alt="Tables Category">
+                    </div>
+                    <h3 class="category-title">Tables</h3>
+                </a>
+            </div>
+        </section>
+
+        <!--Newsletter-->
+        <section id="newsletter-section">
+            <div class="newsletter-container">
+                <div class="newstext">
+                    <p>Subscribe to our newsletter and receive $10 discount on your first order.</p>
+                </div>
+
+                <form class="newsletter-form" action="#" method="post">
+                    <div class="input-group">
+                        <input type="email" id="newsletter-email" required placeholder=" ">
+                        <label for="newsletter-email">Email</label>
+                        <div class="animated-underline"></div>
+                    </div>
+                    <button type="submit" class="newsletter-submit-btn">Send</button>
+                </form>
+            </div>
+        </section>
+
+        <footer class="site-footer">
+            <%- include('../partials/footer.html') %>
+        </footer>
+
+        <script src="/js/script.js"></script>
+    </body>
+</html>

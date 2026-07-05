@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title><%= product.name %> - MA SPACE</title>
+        <link rel="stylesheet" href="/css/style.css">
+    </head>
+
+    <body>
+        <%- include('../partials/header.html') %>
+
+        <main class="product-detail-container section-p1">
+            <div class="product-detail-grid">
+                <div class="product-detail-image">
+                    <img src="<%= product.image %>" alt="<%= product.name %>">
+                </div>
+                <div class="product-detail-info">
+                    <span class="product-detail-category"><%= product.category %></span>
+                    <h1><%= product.name %></h1>
+                    <p class="product-detail-price">$<%= product.price.toFixed(2) %></p>
+                    <p class="product-detail-description"><%= product.description %></p>
+
+                    <form action="/cart/add" method="POST" class="add-to-cart-form">
+                        <input type="hidden" name="productId" value="<%= product.id %>">
+                        <input type="hidden" name="redirectTo" value="/cart">
+
+                        <label for="qty" class="qty-label">Quantity</label>
+                        <input type="number" id="qty" name="qty" value="1" min="1" class="qty-input">
+
+                        <button type="submit" class="add-to-cart-btn">Add to Cart</button>
+                    </form>
+                </div>
+            </div>
+
+            <% if (related.length > 0) { %>
+                <div class="section-header related-header">
+                    <h2>You might also like</h2>
+                </div>
+                <div class="product-grid">
+                    <% related.forEach(function(item) { %>
+                        <a href="/product/<%= item.id %>" class="product-card-link">
+                            <div class="product-card">
+                                <div class="image-container">
+                                    <img src="<%= item.image %>" alt="<%= item.name %>">
+                                </div>
+                                <div class="product-info">
+                                    <h3>Ma Space</h3>
+                                    <p><%= item.name %></p>
+                                </div>
+                            </div>
+                        </a>
+                    <% }); %>
+                </div>
+            <% } %>
+        </main>
+
+        <footer class="site-footer">
+            <%- include('../partials/footer.html') %>
+        </footer>
+
+        <script src="/js/script.js"></script>
+    </body>
+</html>

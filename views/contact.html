@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Contact Us - MA SPACE</title>
+        <link rel="stylesheet" href="/css/style.css">
+    </head>
+
+    <body>
+        <%- include('../partials/header.html') %>
+
+        <main class="content-page section-p1">
+            <div class="content-page-inner narrow">
+                <span class="banner-subtitle">Get in Touch</span>
+                <h1 class="page-title">Contact Us</h1>
+                <p>109 Brookside Avenue, The Foundry, Studio 4B, Silverlake, NY 10021<br>
+                Open Tuesday – Sunday, 10 am – 10 pm</p>
+
+                <% if (sent) { %>
+                    <div class="contact-success">
+                        <p>Thanks for reaching out — we'll get back to you shortly.</p>
+                    </div>
+                <% } else { %>
+                    <% if (error) { %><p class="form-error"><%= error %></p><% } %>
+
+                    <form action="/contact" method="POST" class="auth-form">
+                        <label for="name">Name</label>
+                        <input type="text" id="name" name="name" required>
+
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" required>
+
+                        <label for="message">Message</label>
+                        <textarea id="message" name="message" rows="5" required></textarea>
+
+                        <button type="submit" class="checkout-btn">Send Message</button>
+                    </form>
+                <% } %>
+            </div>
+        </main>
+
+        <footer class="site-footer">
+            <%- include('../partials/footer.html') %>
+        </footer>
+
+        <script src="/js/script.js"></script>
+    </body>
+</html>

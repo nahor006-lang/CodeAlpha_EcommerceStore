@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>My Account - MA SPACE</title>
+        <link rel="stylesheet" href="/css/style.css">
+    </head>
+
+    <body>
+        <%- include('../partials/header.html') %>
+
+        <main class="account-page section-p1">
+            <h1 class="page-title">My Account</h1>
+            <p class="account-welcome">Signed in as <strong><%= currentUser.name %></strong> (<%= currentUser.email %>)</p>
+
+            <h3>Order History</h3>
+            <% if (orders.length === 0) { %>
+                <p>You haven't placed any orders yet.</p>
+                <a href="/shop" class="see-more-btn">Start shopping</a>
+            <% } else { %>
+                <table class="cart-table">
+                    <thead>
+                        <tr>
+                            <th>Order #</th>
+                            <th>Date</th>
+                            <th>Items</th>
+                            <th>Total</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% orders.forEach(function(order) { %>
+                            <tr>
+                                <td><a href="/order-confirmation/<%= order.id %>">#<%= order.id %></a></td>
+                                <td><%= new Date(order.createdAt).toLocaleDateString() %></td>
+                                <td><%= order.items.reduce((a,i) => a + i.qty, 0) %> item(s)</td>
+                                <td>$<%= order.total.toFixed(2) %></td>
+                                <td><%= order.status %></td>
+                            </tr>
+                        <% }); %>
+                    </tbody>
+                </table>
+            <% } %>
+
+            <form action="/logout" method="POST" class="logout-form-block">
+                <button type="submit" class="checkout-btn">Log out</button>
+            </form>
+        </main>
+
+        <footer class="site-footer">
+            <%- include('../partials/footer.html') %>
+        </footer>
+
+        <script src="/js/script.js"></script>
+    </body>
+</html>

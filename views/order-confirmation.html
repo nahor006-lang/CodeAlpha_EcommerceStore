@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Order Confirmed - MA SPACE</title>
+        <link rel="stylesheet" href="/css/style.css">
+    </head>
+
+    <body>
+        <%- include('../partials/header.html') %>
+
+        <main class="confirmation-page section-p1">
+            <div class="confirmation-box">
+                <span class="confirmation-check">&#10003;</span>
+                <h1>Thank you, <%= order.shipping.fullName %>!</h1>
+                <p>Your order <strong>#<%= order.id %></strong> has been placed and is now <%= order.status.toLowerCase() %>.</p>
+
+                <div class="cart-summary">
+                    <h3>Order Summary</h3>
+                    <% order.items.forEach(function(item) { %>
+                        <div class="cart-summary-row">
+                            <span><%= item.name %> &times; <%= item.qty %></span>
+                            <span>$<%= (item.price * item.qty).toFixed(2) %></span>
+                        </div>
+                    <% }); %>
+                    <hr>
+                    <div class="cart-summary-row cart-summary-total">
+                        <span>Total</span>
+                        <span>$<%= order.total.toFixed(2) %></span>
+                    </div>
+                </div>
+
+                <p class="shipping-note">
+                    Shipping to: <%= order.shipping.address %>, <%= order.shipping.city %>,
+                    <%= order.shipping.postalCode %>, <%= order.shipping.country %>
+                </p>
+
+                <a href="/shop" class="see-more-btn">Continue shopping</a>
+            </div>
+        </main>
+
+        <footer class="site-footer">
+            <%- include('../partials/footer.html') %>
+        </footer>
+
+        <script src="/js/script.js"></script>
+    </body>
+</html>

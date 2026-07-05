@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Shop - MA SPACE</title>
+        <link rel="stylesheet" href="/css/style.css">
+    </head>
+
+    <body>
+        <%- include('../partials/header.html') %>
+
+        <header class="arrivals-hero">
+            <div class="hero-left">
+                <h1>Shop</h1>
+                <p class="hero-description">
+                    Fresh perspectives for your space. Explore our latest arrivals designed for mindful living.
+                </p>
+                <div class="category-filter-pills">
+                    <% categories.forEach(function(cat) { %>
+                        <a href="/shop<%= cat === 'All' ? '' : '?category=' + encodeURIComponent(cat) %>"
+                           class="filter-pill <%= (category === cat) ? 'active' : '' %>">
+                           <%= cat %>
+                        </a>
+                    <% }); %>
+                </div>
+            </div>
+            <div class="hero-right">
+                <div class="hero-image-wrapper"></div>
+            </div>
+        </header>
+
+        <main class="arrivals-container">
+            <div class="expanded-product-grid">
+                <% products.forEach(function(product) { %>
+                    <div class="product-card">
+                        <a href="/product/<%= product.id %>">
+                            <div class="image-container">
+                                <img src="<%= product.image %>" alt="<%= product.name %>">
+                                <% if (product.tag) { %><span class="orange-dot"></span><% } %>
+                            </div>
+                        </a>
+                        <div class="product-info">
+                            <a href="/product/<%= product.id %>" class="product-info-link">
+                                <h3>Ma Space</h3>
+                                <p><%= product.name %></p>
+                                <p class="product-price">$<%= product.price.toFixed(2) %></p>
+                            </a>
+                            <form action="/cart/add" method="POST" class="quick-add-form">
+                                <input type="hidden" name="productId" value="<%= product.id %>">
+                                <input type="hidden" name="qty" value="1">
+                                <input type="hidden" name="redirectTo" value="/shop<%= category !== 'All' ? '?category=' + encodeURIComponent(category) : '' %>">
+                                <button type="submit" class="quick-add-btn">Add to cart</button>
+                            </form>
+                        </div>
+                    </div>
+                <% }); %>
+
+                <% if (products.length === 0) { %>
+                    <p>No products found in this category yet.</p>
+                <% } %>
+            </div>
+        </main>
+
+        <footer class="site-footer">
+            <%- include('../partials/footer.html') %>
+        </footer>
+
+        <script src="/js/script.js"></script>
+    </body>
+</html>
