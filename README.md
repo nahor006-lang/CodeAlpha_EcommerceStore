@@ -106,8 +106,8 @@ http://localhost:3000
 | `pages-routes.js` | About, Blog, Terms, Contact |
 | `header.html`, `footer.html` | Included on every page |
 | `index.html`, `shop.html`, `product.html`, `cart.html`, `checkout.html`, `order-confirmation.html`, `account.html`, `login.html`, `register.html`, `about.html`, `blog.html`, `terms.html`, `contact.html`, `404.html` | One template per page |
-| `style.css` | Your original stylesheet, plus additions for the newer pages |
-| `script.js` | Search-dropdown behavior (header/footer no longer need JS to load) |
+| `style.css` | original stylesheet for all pages |
+| `script.js` | Search-dropdown behavior |
 | `logo.png`, `Hero.jpg`, `arrivals-hero.jpg` | Site logo + hero banner images |
 | `product1.jpg` ... `tables-cat.jpg` | Sample product photos |
 
@@ -125,8 +125,8 @@ http://localhost:3000
 | Login | `/login` | Signs in, remembers where you were headed |
 | Account | `/account` | Shows your past orders |
 | About | `/about` | Brand story |
-| Journal / Blog | `/blog` | Sample posts (static for now — swap in real content whenever you're ready) |
-| Terms & Conditions | `/terms` | Standard boilerplate — have a lawyer review before going live |
+| Journal / Blog | `/blog` | Sample posts (static for now) |
+| Terms & Conditions | `/terms` | Standard boilerplate |
 | Contact | `/contact` | Working form; submissions are saved to `data.json` |
 | 404 | anything unmatched | Friendly "page not found" |
 
